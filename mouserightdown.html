@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ContextMenu Event Example</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+<div id="myDiv">Right click or Ctrl+click me to get a custom context menu.
+    Click anywhere else to get the default context menu.
+</div>
+<div id="myMenu" style="position:absolute;visibility:hidden;background-color:silver">
+   <p>请尊重版权</p>
+
+</div>
+
+<script>
+    EventUtil.addHandler(window, "load", function(event){
+        var div = document.getElementById("myDiv");
+        EventUtil.addHandler(div, "contextmenu", function(event){
+            event = EventUtil.getEvent(event);
+            EventUtil.preventDefault(event);
+            var menu = document.getElementById("myMenu");
+            menu.style.left = event.clientX + "px";
+            menu.style.top = event.clientY + "px";
+            menu.style.visibility = "visible";
+        });
+        EventUtil.addHandler(document, "click", function(event){
+            document.getElementById("myMenu").style.visibility = "hidden";
+        });
+    });
+</script>
+</body>
+</html>
