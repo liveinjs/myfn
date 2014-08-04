@@ -1,6 +1,6 @@
 /**
  * @author liveinjs
- * @type {co}
+ * @type {bindarg}
  * @version 1.0
  * @description 返回一个绑定参数的函数
  */
